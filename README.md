@@ -79,3 +79,74 @@ sudo systemctl start mongodb
 Now MongoDB is up and running and ready to use! 🚀
 
 ---
+
+¡Muy bien! Esta parte está muy clara en cuanto a intención, pero vamos a corregir algunos errores gramaticales, mejorar la redacción en inglés y darle un formato más ordenado y profesional. También haré que los ejemplos en bash se lean más limpios y fáciles de seguir.
+
+Aquí tienes una versión mejorada de tu explicación:
+
+---
+
+### 🧪 Basic MongoDB Shell Commands
+
+Here are some fundamental MongoDB shell commands I’ve learned so far:
+
+#### 📂 Viewing and Selecting Databases
+
+```bash
+show dbs            # Lists all databases
+use <database>      # Switches to the specified database (creates it if it doesn't exist)
+```
+
+If you use a database that doesn't exist yet, MongoDB will *prepare* to create it. However, the database is only actually created when you insert data (like a collection or document).
+
+**Example:**
+
+```bash
+use school                  # 'school' doesn't exist yet
+db.createCollection("students")   # Creates a collection within the 'school' database
+```
+
+This effectively creates a new database called `school`.
+
+#### 🗑️ Dropping a Database
+
+To delete the current database:
+
+```bash
+db.dropDatabase()
+```
+
+---
+
+### 📝 Inserting Documents
+
+Now, let’s see how to insert documents into a MongoDB database.
+
+**Single document:**
+
+```bash
+use school
+db.students.insertOne({ name: "Spongebob", age: 30, gpa: 3.2 })
+```
+
+> If the `students` collection doesn't exist, MongoDB will automatically create it.
+
+**Multiple documents:**
+
+```bash
+db.students.insertMany([
+  { name: "Patrick", age: 38, gpa: 1.5 },
+  { name: "Sandy", age: 27, gpa: 4.0 },
+  { name: "Gary", age: 18, gpa: 2.5 }
+])
+```
+
+---
+
+### 🔍 Retrieving Documents
+
+To return all documents in a collection:
+
+```bash
+db.students.find()
+```
