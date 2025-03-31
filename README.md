@@ -43,3 +43,39 @@ I'm always open to learning new things and improving my skills. If you have usef
 If you're working on something exciting or have a product idea in mind, I'd love to hear about it. Maybe we can build something great together.
 
 For example, it could be a startup idea, a community tool, or even just a fun app. I'm eager to collaborate and bring ideas to life! 👀
+
+
+--- 
+
+### 📚 How I Started Learning MongoDB
+
+I began learning MongoDB by watching a YouTube video and reading through a helpful page that summarizes key concepts quickly:
+
+```bash
+🌐 Page: https://learnxinyminutes.com/mongodb/
+▶️ YouTube: https://www.youtube.com/watch?v=c2M-rlkkT5o
+```
+
+To get started, I installed `mongosh` on my Arch Linux system using the following command:
+
+```bash
+yay -Sy mongodb-bin
+```
+
+Once installed, you can connect to MongoDB with:
+
+```bash
+mongosh
+```
+
+At this point, I encountered a common issue — MongoDB wasn't running yet. To fix this, you need to start the MongoDB service with the following commands:
+
+```bash
+sudo systemctl status mongodb
+sudo systemctl enable mongodb
+sudo systemctl start mongodb
+```
+
+Now MongoDB is up and running and ready to use! 🚀
+
+---
