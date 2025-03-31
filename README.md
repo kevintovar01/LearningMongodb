@@ -80,12 +80,6 @@ Now MongoDB is up and running and ready to use! 🚀
 
 ---
 
-¡Muy bien! Esta parte está muy clara en cuanto a intención, pero vamos a corregir algunos errores gramaticales, mejorar la redacción en inglés y darle un formato más ordenado y profesional. También haré que los ejemplos en bash se lean más limpios y fáciles de seguir.
-
-Aquí tienes una versión mejorada de tu explicación:
-
----
-
 ### 🧪 Basic MongoDB Shell Commands
 
 Here are some fundamental MongoDB shell commands I’ve learned so far:
