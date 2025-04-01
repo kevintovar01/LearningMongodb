@@ -144,3 +144,46 @@ To return all documents in a collection:
 ```bash
 db.students.find()
 ```
+---
+
+### 🧬 MongoDB Data Types
+
+Now let's learn about some common **data types** in MongoDB documents. These include:
+
+- `String` – Text data
+- `Integer` – Whole numbers
+- `Double` – Numbers with decimals
+- `Boolean` – `true` or `false`
+- `Date` – Date and time values
+- `Null` – Represents a null or missing value
+- `Array` – A list of values
+- `Object` – Embedded documents (objects inside objects)
+
+In MongoDB, we can also nest(anidar) documents or use arrays to represent more complex data structures.
+
+**Example: Inserting a document with various data types:**
+
+```bash
+db.students.insertOne({
+  name: "Larry",
+  age: 32,
+  gpa: 2.8,
+  fullTime: false,
+  registerDate: new Date(),
+  graduationDate: null,
+  courses: ["Biology", "Chemistry", "Calculus"],
+  address: {
+    street: "123 Fake St.",
+    city: "Bikini Bottom",
+    zip: 12345
+  }
+})
+```
+
+In this example:
+- `registerDate` uses JavaScript's `Date()` object to store the current date.
+- `courses` is an array of strings.
+- `address` is a nested object (embedded(incorporado) document).
+
+---
+
