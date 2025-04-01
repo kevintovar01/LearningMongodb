@@ -226,3 +226,49 @@ In this example:
 > Projections let you customize your output — useful for showing only what you need!
 
 ---
+
+### 🔧 Updating Documents
+
+To update documents in MongoDB, you can use the `.updateOne()` or `.updateMany()` methods.
+
+#### 🛠️ Syntax
+
+```bash
+db.collection.updateOne(filter, update)
+db.collection.updateMany(filter, update)
+```
+
+#### 🔄 Common Update Operators
+
+- `$set`: Updates or adds a value to a field.
+- `$unset`: Removes a field from the document.
+- `$exists`: Checks if a field exists (used in queries, not updates).
+
+#### 💡 Examples
+
+```bash
+# Set 'fullTime' to true for the student named "Larry"
+db.students.updateOne({ name: "Larry" }, { $set: { fullTime: true } })
+
+# Set 'fullTime' to false for all students
+db.students.updateMany({}, { $set: { fullTime: false } })
+
+# Set 'fullTime' to true, but only if the field already exists
+db.students.updateMany(
+  { fullTime: { $exists: true } },
+  { $set: { fullTime: true } }
+)
+```
+
+#### ❌ Remove a field
+
+```bash
+db.students.updateOne(
+  { name: "Larry" },
+  { $unset: { fullTime: "" } }
+)
+```
+
+
+
+
