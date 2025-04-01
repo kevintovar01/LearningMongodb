@@ -187,3 +187,42 @@ In this example:
 
 ---
 
+### 📊 Sorting and Limiting Documents
+
+To **sort documents**, we use the `.sort()` method:
+
+```bash
+db.students.find().sort({ name: 1 })   # 1 for ascending (A-Z), -1 for descending (Z-A)
+db.students.find().sort({ gpa: 1 })    # Sort by GPA in ascending order
+```
+
+To **limit** the number of documents returned:
+
+```bash
+db.students.find().limit(10)           # Returns only the first 10 documents
+```
+
+You can **combine sorting and limiting**:
+
+```bash
+db.students.find().sort({ gpa: -1 }).limit(1)   # Returns the student with the highest GPA
+```
+
+---
+
+### 🔎 The `.find()` Method
+
+The `.find()` method allows you to query documents and control which fields to return using **projection**.
+`.find({query}, {projection})`
+
+```bash
+db.students.find({ name: "Spongebob" }, { _id: false, name: true })
+```
+
+In this example:
+- The **query** is `{ name: "Spongebob" }`
+- The **projection** is `{ _id: false, name: true }`, which returns only the `name` field and hides the `_id`
+
+> Projections let you customize your output — useful for showing only what you need!
+
+---
