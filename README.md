@@ -270,5 +270,23 @@ db.students.updateOne(
 ```
 
 
+### 🗑️ Deleting Documents
 
+Deleting documents in MongoDB is straightforward, similar to updating.
 
+#### 💥 Basic Deletion Methods
+
+```bash
+db.students.deleteOne({ name: "Larry" })      # Deletes the first match
+db.students.deleteMany({ fullTime: false })   # Deletes all students where 'fullTime' is false
+```
+
+#### 🔍 Conditional Deletion with `$exists`
+
+You can also delete documents that are missing certain fields:
+
+```bash
+db.students.deleteMany({ registerDate: { $exists: false } })
+```
+
+This removes all documents that don't have a `registerDate` field.
