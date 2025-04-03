@@ -369,3 +369,73 @@ This returns students whose names are **not** *Kevin* or *Patrick*.
 
 ---
 
+
+### 🧠 Logical Query Operators
+
+Logical operators in MongoDB allow you to combine or modify query conditions using logical expressions. These return documents based on whether certain **conditions are true or false**.
+
+---
+
+### 🔹 `$and` – Logical AND
+
+Returns documents that **match all** the specified conditions.
+
+```bash
+db.students.find({
+  $and: [
+    { fullTime: true },
+    { age: { $lte: 20 } }
+  ]
+})
+```
+
+This finds students who are **full-time** _and_ **20 or younger**.
+
+---
+
+### 🔹 `$or` – Logical OR
+
+Returns documents that **match at least one** of the specified conditions.
+
+```bash
+db.students.find({
+  $or: [
+    { fullTime: false },
+    { age: { $lte: 20 } }
+  ]
+})
+```
+
+This finds students who are either **not full-time** _or_ **20 or younger**.
+
+---
+
+### 🔹 `$nor` – Logical NOR
+
+Returns documents that **fail to match all** the specified conditions.
+
+```bash
+db.students.find({
+  $nor: [
+    { fullTime: false },
+    { age: { $lte: 20 } }
+  ]
+})
+```
+
+This finds students who are **full-time** _and_ **older than 20** (i.e., not matching either condition).
+
+---
+
+### 🔹 `$not` – Logical NOT
+
+**Inverts** the effect of a query expression. Returns documents that **do not** match the condition.
+
+```bash
+db.students.find({
+  age: { $not: { $gte: 30 } }
+})
+```
+
+This finds students whose age is **not greater than or equal to 30**.
+
