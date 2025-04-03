@@ -290,3 +290,82 @@ db.students.deleteMany({ registerDate: { $exists: false } })
 ```
 
 This removes all documents that don't have a `registerDate` field.
+
+---
+
+### 📘 MongoDB Comparison Query Operators
+
+Comparison operators in MongoDB allow you to filter documents based on specific value comparisons. Here’s a quick rundown with examples:
+
+---
+
+### 🔹 `$ne` – Not Equal
+
+Returns documents where the value of the field is **not equal** to the specified value.
+
+```bash
+db.students.find({ name: { $ne: "Spongebob" } })
+```
+
+**Output:**
+```json
+[
+  {
+    _id: ObjectId('67eea94cb2b50e38206b140c'),
+    name: 'Kevin',
+    gpa: 5,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('67eeaa01b2b50e38206b140d'),
+    name: 'Patrick',
+    gpa: 2.3,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('67eeaa01b2b50e38206b140e'),
+    name: 'Larry',
+    gpa: 5,
+    fullTime: true
+  }
+]
+```
+
+---
+
+### 🔹 `$lt`, `$lte`, `$gt`, `$gte` – Less Than / Greater Than
+
+Used to compare numerical (or date) values:
+
+```bash
+db.students.find({ age: { $lt: 20 } })   # Less than 20
+db.students.find({ age: { $lte: 20 } })  # Less than or equal to 20
+db.students.find({ age: { $gt: 20 } })   # Greater than 20
+db.students.find({ age: { $gte: 20 } })  # Greater than or equal to 20
+```
+
+**Example: Range query using `$gte` and `$lte`:**
+```bash
+db.students.find({ gpa: { $gte: 3, $lte: 4 } })  # GPA between 3 and 4
+```
+
+---
+
+### 🔹 `$in` and `$nin` – Match Specific Values
+
+These operators match if the field’s value is **in** or **not in** a list of specified values.
+
+```bash
+db.students.find({ name: { $in: ["Spongebob", "Larry"] } })
+```
+
+This will return students whose names are either *Spongebob* or *Larry*.
+
+```bash
+db.students.find({ name: { $nin: ["Kevin", "Patrick"] } })
+```
+
+This returns students whose names are **not** *Kevin* or *Patrick*.
+
+---
+
