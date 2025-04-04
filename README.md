@@ -80,6 +80,16 @@ Now MongoDB is up and running and ready to use! 🚀
 
 ---
 
+### 🧠 Some Important Concepts Before Getting Started
+
+- A **collection** is a group of documents.
+- A **database** is a group of collections.
+
+> In MongoDB, documents are stored in collections, and collections belong to databases.  
+This is the basic structure you'll work with when using MongoDB.
+
+---
+
 ### 🧪 Basic MongoDB Shell Commands
 
 Here are some fundamental MongoDB shell commands I’ve learned so far:
@@ -308,7 +318,7 @@ db.students.find({ name: { $ne: "Spongebob" } })
 ```
 
 **Output:**
-```json
+```bash
 [
   {
     _id: ObjectId('67eea94cb2b50e38206b140c'),
@@ -439,3 +449,73 @@ db.students.find({
 
 This finds students whose age is **not greater than or equal to 30**.
 
+---
+
+### 📌 Indexes
+
+Indexes support the efficient execution of queries in MongoDB.  
+Without indexes, MongoDB must perform a **collection scan**, meaning it checks every document in the collection to find matches for a query.  
+If an appropriate index exists, MongoDB can use it to quickly locate the relevant documents, improving performance significantly.
+
+#### 🔍 Check how a query is executed:
+
+```bash
+db.students.find({ name: "Larry" }).explain("executionStats")
+```
+
+#### ⚙️ Create an index on a field:
+
+```bash
+db.students.createIndex({ name: 1 })   # 1 for ascending, -1 for descending
+```
+
+#### 📃 List all indexes:
+
+```bash
+db.students.getIndexes()
+```
+
+#### ❌ Drop an index:
+
+```bash
+db.students.dropIndex("name_1")
+```
+
+> Indexes speed up read operations, but they use more memory and may slow down inserts, updates, and deletes because the **B-tree** structure must be updated each time.
+
+📌 **Tip:** Indexes are great when your app reads a lot of data, but be careful when doing frequent updates or deletions.
+
+---
+
+### 📁 Collections
+
+To view all collections in the current database:
+
+```bash
+show collections
+```
+
+You can also pass options when creating a collection:
+
+```bash
+db.createCollection("teachers", {
+  capped: true,
+  size: 1000 * 1024,   # 10 MB max size
+  max: 100             # Max 100 documents
+})
+```
+
+> `capped: true` means it's a fixed-size collection that behaves like a circular buffer.
+
+To delete a collection:
+
+```bash
+db.courses.drop()
+```
+
+---
+
+### ✅ Wrapping Up
+
+At this point, I’ve completed this MongoDB learning path.  
+Now I’m going to **start implementing everything I’ve learned** in real projects to reinforce my knowledge and build cool things! 🚀
